@@ -1,9 +1,5 @@
 # Project Description / Proposal
-We will implement a multi-core Microwatt CPU with an open-source eFPGA for ML acceleration. 
-In general, the ML models will be pre-trained and exported in C routines, finally loaded into the eFPGA during runtime. 
-This will allow live inference from external sensor or chip data, and allow CPUs to output required signals based on inference.
-The CPUs and FPGA will communicate via wishbone interface. 
-
+We will implement a Microwatt CPU with embedded AI accelerator. The accelerator will be implemented as a bank of MAC units, with an accompanied sram for holding weights, written in from the CPU. The CPU will, during runtime, stream weights inputted from UART onto the SRAM, from which the accelerator computer after a start signal is given (from CPU). Afterwards, the CPU retrieves the output value and returns it over UART. The Interface between the Microwatt CPU and Accelerator will be implementing using a Wisbone-AXI peripheral. 
 
 
 # OpenFrame Overview
