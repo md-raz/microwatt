@@ -1,3 +1,11 @@
+# Project Description / Proposal
+We will implement a multi-core Microwatt CPU with an open-source eFPGA for ML acceleration. 
+In general, the ML models will be pre-trained and exported in C routines, finally loaded into the eFPGA during runtime. 
+This will allow live inference from external sensor or chip data, and allow CPUs to output required signals based on inference.
+The CPUs and FPGA will communicate via wishbone interface. 
+
+
+
 # OpenFrame Overview
 
 The OpenFrame Project provides an empty harness chip that differs significantly from the Caravel and Caravan designs. Unlike Caravel and Caravan, which include integrated SoCs and additional features, OpenFrame offers only the essential padframe, providing users with a clean slate for their custom designs.
