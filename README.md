@@ -1,5 +1,5 @@
 # Project Description / Proposal
-We will implement a Microwatt CPU with embedded AI accelerator. The accelerator will be implemented as a bank of MAC units, with an accompanied sram for holding weights, written in from the CPU. The CPU will, during runtime, stream weights inputted from UART onto the SRAM, from which the accelerator computer after a start signal is given (from CPU). Afterwards, the CPU retrieves the output value and returns it over UART. The Interface between the Microwatt CPU and Accelerator will be implementing using a Wisbone-AXI peripheral. 
+We will implement a Microwatt CPU with embedded AI accelerator. The accelerator will be implemented as a bank of MAC units, with an accompanied sram for holding weights, written in from the CPU. The CPU will, during runtime, stream weights inputted from UART onto the SRAM, from which the accelerator computes after a start signal is given (from CPU). Afterwards, the CPU retrieves the output value and returns it over UART. The Interface between the Microwatt CPU and Accelerator will be implementing using a Wisbone-AXI peripheral. 
 
 
 # OpenFrame Overview
