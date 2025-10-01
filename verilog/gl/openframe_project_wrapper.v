@@ -5,18 +5,6 @@ module openframe_project_wrapper (por_l,
     resetb_l,
     vssd1,
     vccd1,
-    vssio,
-    vddio,
-    vdda2,
-    vssa2,
-    vdda1,
-    vssa1,
-    vdda,
-    vssa,
-    vssd2,
-    vccd2,
-    vssd,
-    vccd,
     analog_io,
     analog_noesd_io,
     gpio_analog_en,
@@ -44,18 +32,6 @@ module openframe_project_wrapper (por_l,
  input resetb_l;
  inout vssd1;
  inout vccd1;
- inout vssio;
- inout vddio;
- inout vdda2;
- inout vssa2;
- inout vdda1;
- inout vssa1;
- inout vdda;
- inout vssa;
- inout vssd2;
- inout vccd2;
- inout vssd;
- inout vccd;
  inout [43:0] analog_io;
  inout [43:0] analog_noesd_io;
  output [43:0] gpio_analog_en;

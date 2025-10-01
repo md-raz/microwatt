@@ -33,7 +33,7 @@
 
 `ifndef PnR
     // `include "openframe_project_wrapper.v"
-    // `include "user_proj_top.v"
+    // `include "user_proj_timer.v"
     // `include "vccd1_connection.v"
     // `include "vssd1_connection.v"
 `endif

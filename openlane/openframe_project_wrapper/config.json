@@ -28,6 +28,7 @@
         "dir::../../spef/multicorner/user_proj_timer.max.spef"
     ],
     "MAX_TRANSITION_CONSTRAINT": 0.5,
+    "ERROR_ON_NL_ASSIGN_STATEMENTS": 0,
     "QUIT_ON_SYNTH_CHECKS": 0,
     "FP_PDN_CHECK_NODES": 0,
     "SYNTH_ELABORATE_ONLY": 1,
