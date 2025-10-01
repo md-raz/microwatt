@@ -1,3 +1,7 @@
+# Project Description / Proposal
+We will implement a Microwatt + TinyML Accelerator that pairs a single-core Microwatt CPU with a compact INT8 matrix-vector accelerator to run modest classifiers. Microwatt stays unmodified on Wishbone and reaches the accelerator through a WB-to-AXI bridge: AXI4-Lite exposes simple control/status registers while a lightweight AXI data path (and local SRAM windows) handles burst loads of weights and activations. The accelerator implements an 8×8 MAC array (64 MACs) with bias add, per-layer requantization (multiply + round >> shift), and optional ReLU clamp, returning INT8 outputs to scratchpad. All on-chip memories (CPU Program and memory for ML weights) will use ChipFoundry Commercial SRAM instances. A tiny UART bootloader in ROM makes the CPU fully reprogrammable: you can push a new C firmware image and stream quantized weights at runtime, then have the firmware sample inputs via GPIO/UART/SPI, trigger inference on the accelerator, and drive GPIO outputs (for LEDs, relays, etc) based on results.
+
+
 # OpenFrame Overview
 
 The OpenFrame Project provides an empty harness chip that differs significantly from the Caravel and Caravan designs. Unlike Caravel and Caravan, which include integrated SoCs and additional features, OpenFrame offers only the essential padframe, providing users with a clean slate for their custom designs.
