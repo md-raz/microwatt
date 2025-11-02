@@ -1,0 +1,30 @@
+# RTL Filelist for Microwatt OpenFrame Synthesis
+# ================================================
+# This file lists all RTL sources required for OpenLane synthesis
+# of the Microwatt CPU design for the ChipFoundry OpenFrame platform.
+
+# Top-level module
+soc_top.sv
+
+# Microwatt CPU wrapper and core
+cpu/mw_top.v
+cpu/mw.v
+
+# Wishbone interconnect
+cpu/wb_mux.sv
+
+# Boot ROM
+rtl/wb_rom.v
+
+# ChipFoundry SRAM (4096x32 = 16KB)
+sram/CF_SRAM_4096x32/hdl/controllers/ram_controller_wb.v
+sram/CF_SRAM_4096x32/hdl/bus_wrapper/CF_SRAM_4096x32_wb_wrapper.v
+
+# SRAM hard macro (use behavioral for simulation, GDS for tapeout)
+# For synthesis: use stub or behavioral model
+# For tapeout: replace with GDS macro instantiation
+sram/CF_SRAM_4096x32/hdl/CF_SRAM_4096x32.v
+
+# Additional data files
+# rom.hex - Boot ROM initialization (PowerPC machine code)
+

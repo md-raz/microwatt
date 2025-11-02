@@ -103,33 +103,50 @@ module openframe_project_wrapper (
     input  [`OPENFRAME_IO_PADS-1:0] gpio_loopback_zero
 );
 
-	user_proj_timer mprj (
+	// Microwatt SOC instantiation
+	soc_top mprj (
 `ifdef USE_POWER_PINS
 		.vccd1(vccd1),
 		.vssd1(vssd1),
 `endif
-        .wb_clk_i(gpio_in[0]),
-        .wb_rst_i(gpio_in[1]),
-        .io_in(gpio_in[12:2]),
-        .io_out(gpio_out[12:2]),
-        .io_oeb(gpio_oeb[12:2])
-
-	    /* NOTE:  Openframe signals not used in picosoc:	*/
-	    /* porb_h:    3.3V domain signal			*/
-	    /* resetb_h:  3.3V domain signal			*/
-	    /* gpio_in_h: 3.3V domain signals			*/
-	    /* analog_io: analog signals			*/
-	    /* analog_noesd_io: analog signals			*/
+		.wb_clk_i(gpio_in[0]),
+		.wb_rst_i(gpio_in[1]),
+		.io_in(gpio_in[12:2]),
+		.io_out(gpio_out[12:2]),
+		.io_oeb(gpio_oeb[12:2]),
+		.uart_rx(gpio_in[13]),
+		.uart_tx(gpio_out[13])
 	);
 
-	/* All analog enable/select/polarity and holdover bits	*/
-	/* will not be handled in the picosoc module.  Tie	*/
-	/* each one of them off to the local loopback zero bit.	*/
-
+	/* Configure remaining GPIOs */
+	/* Tie unused outputs to zero */
+	assign gpio_out[1:0] = 2'b00;
+	assign gpio_out[43:14] = 30'h0;
+	
+	/* Set unused GPIO output enables to high-Z (oeb=1) */
+	assign gpio_oeb[1:0] = 2'b11;
+	assign gpio_oeb[13] = 1'b0;  // UART TX is output
+	assign gpio_oeb[43:14] = 30'h3FFFFFFF;
+	
+	/* Disable input buffers for output-only pins */
+	assign gpio_inp_dis[1:0] = 2'b00;
+	assign gpio_inp_dis[12:2] = 11'h000;  // User IOs have inputs enabled
+	assign gpio_inp_dis[13] = 1'b0;       // UART RX input enabled
+	assign gpio_inp_dis[43:14] = 30'h0;
+	
+	/* Configure pad control signals - use loopback zero for analog/special features */
+	assign gpio_ib_mode_sel = gpio_loopback_zero;
+	assign gpio_vtrip_sel = gpio_loopback_zero;
+	assign gpio_slow_sel = gpio_loopback_zero;
+	assign gpio_holdover = gpio_loopback_zero;
 	assign gpio_analog_en = gpio_loopback_zero;
 	assign gpio_analog_pol = gpio_loopback_zero;
 	assign gpio_analog_sel = gpio_loopback_zero;
-	assign gpio_holdover = gpio_loopback_zero;
+	
+	/* Set digital mode (dm[2:0] = 110 for output, 001 for input) */
+	assign gpio_dm2 = {44{1'b0}};
+	assign gpio_dm1 = {44{1'b0}};
+	assign gpio_dm0 = {44{1'b0}};
 
 	(* keep *) vccd1_connection vccd1_connection ();
 	(* keep *) vssd1_connection vssd1_connection ();

@@ -6,26 +6,19 @@
         "dir::/../../verilog/rtl/openframe_project_wrapper.v"
     ],
     "VERILOG_FILES_BLACKBOX": [
-        "dir::../../verilog/gl/user_proj_timer.v",
         "dir::../../verilog/gl/vccd1_connection.v",
-        "dir::../../verilog/gl/vssd1_connection.v"
+        "dir::../../verilog/gl/vssd1_connection.v",
+        "dir::../../verilog/gl/soc_top.v"
     ],
     "EXTRA_LEFS": [
-        "dir::../../lef/user_proj_timer.lef",
         "dir::../../lef/vccd1_connection.lef",
-        "dir::../../lef/vssd1_connection.lef"
+        "dir::../../lef/vssd1_connection.lef",
+        "dir::../../lef/soc_top.lef"
     ],
     "EXTRA_GDS_FILES": [
-        "dir::../../gds/user_proj_timer.gds",
         "dir::../../gds/vccd1_connection.gds",
-        "dir::../../gds/vssd1_connection.gds"
-    ],
-    "EXTRA_LIBS": "dir::../../lib/user_proj_timer.lib",
-    "EXTRA_SPEFS": [
-        "user_proj_timer",
-        "dir::../../spef/multicorner/user_proj_timer.min.spef",
-        "dir::../../spef/multicorner/user_proj_timer.nom.spef",
-        "dir::../../spef/multicorner/user_proj_timer.max.spef"
+        "dir::../../gds/vssd1_connection.gds",
+        "dir::../../gds/soc_top.gds"
     ],
     "MAX_TRANSITION_CONSTRAINT": 0.5,
     "ERROR_ON_NL_ASSIGN_STATEMENTS": 0,
@@ -88,7 +81,7 @@
     "DIE_AREA": "0 0 3166.63 4766.630",
     "CORE_AREA": "40 40 3126.63 4726.630",
     "RUN_IRDROP_REPORT": 0,
-    "FP_PDN_MACRO_HOOKS": "mprj vccd1 vssd1 vccd1 vssd1",
+    "FP_PDN_MACRO_HOOKS": "mprj vccd1 vssd1 vccd1 vssd1, vccd1_connection vccd1 vssd1 vccd1 vssd1, vssd1_connection vccd1 vssd1 vccd1 vssd1",
     "FP_PDN_CFG": "dir::pdn_cfg.tcl",
     "FP_DEF_TEMPLATE": "dir::fixed_dont_change/openframe_project_wrapper.def",
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
