@@ -45,15 +45,15 @@ module microwatt_top (
 
     // Map byte/word addressing
     assign wbm_adr   = {ext_adr_w, 2'b00};   // word->byte
-    assign wbm_stall = 1'b0;                 // classic WB fabric? then tie to 0
+    // assign wbm_stall = 1'b0;                 // classic WB fabric? then tie to 0
 
     // Instantiate generated netlist
     soc u_soc (
         .rst         (rst),
         .system_clk  (clk),
 
-        .run_out     (run_out),
-        .run_outs    (run_outs),
+        // .run_out     (run_out),
+        // .run_outs    (run_outs),
 
         // -------- DRAM WB (UNUSED) : tie return channel to idle -----------
         .\wb_dram_in[adr]  (wb_dram_adr),
@@ -76,7 +76,7 @@ module microwatt_top (
 
         .\wb_ext_io_out[dat] (wbm_dat_r),
         .\wb_ext_io_out[ack] (wbm_ack),
-        .\wb_ext_io_out[stall] (wbm_stall),
+        // .\wb_ext_io_out[stall] (wbm_stall),
 
         .wb_ext_is_dram_csr (wb_ext_is_dram_csr),
         .wb_ext_is_dram_init (wb_ext_is_dram_init),
@@ -92,7 +92,7 @@ module microwatt_top (
         .\wishbone_dma_out[we]  (1'b0),
         .\wishbone_dma_in[dat]  (dma_dat_w),
         .\wishbone_dma_in[ack]  (dma_ack),
-        .\wishbone_dma_in[stall ](dma_stall),
+        .\wishbone_dma_in[stall] (dma_stall),
 
         // -------- External IRQs (unused) ----------------------------------
         .ext_irq_eth   (1'b0),
@@ -109,15 +109,15 @@ module microwatt_top (
         .spi_flash_cs_n   (/* unused */),
         .spi_flash_sdat_o (/* unused */),
         .spi_flash_sdat_oe (/* unused */),
-        .spi_flash_sdat_i (1'b0),
+        .spi_flash_sdat_i (4'b0),
 
         // -------- GPIO -----------------------------------------------------
         .gpio_out (gpio_out),
         .gpio_dir (gpio_dir),
-        .gpio_in  (gpio_in),
+        .gpio_in  (gpio_in)
 
         // -------- SW reset request (optional observe) ----------------------
-        .sw_soc_reset (sw_soc_reset)
+        // .sw_soc_reset (sw_soc_reset)
     );
 
 endmodule

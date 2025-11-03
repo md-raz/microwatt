@@ -21,6 +21,8 @@
 // This license is subject to the terms of any separate agreement you have with Umbralogic Technologies LLC d/b/a ChipFoundry
 // concerning the use of this software, which shall control in case of conflict.
 
+/// sta-blackbox
+
 `timescale 1 ns / 1 ps
 
 

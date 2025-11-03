@@ -141,7 +141,7 @@ module soc_top (
 
     wb_rom #(
         .ADDR_SIZE(10),                 // 4 KiB = 1024 words
-        .INIT_HEX_FILE("rom.hex")
+        .INIT_HEX_FILE("../verilog/rtl/mw/rom.hex")
     ) u_boot_rom (
         .i_clk (clk),
         .i_rst (rst),

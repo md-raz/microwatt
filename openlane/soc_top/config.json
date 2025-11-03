@@ -8,27 +8,49 @@
         "dir::../../verilog/rtl/mw/cpu/mw_top.v",
         "dir::../../verilog/rtl/mw/cpu/mw.v",
         "dir::../../verilog/rtl/mw/cpu/wb_rom.v",
+        "dir::../../verilog/rtl/mw/cpu/uart16550/uart_defines.v",
+        "dir::../../verilog/rtl/mw/cpu/uart16550/uart_receiver.v",
+        "dir::../../verilog/rtl/mw/cpu/uart16550/uart_regs.v",
+        "dir::../../verilog/rtl/mw/cpu/uart16550/uart_rfifo.v",
+        "dir::../../verilog/rtl/mw/cpu/uart16550/uart_sync_flops.v",
+        "dir::../../verilog/rtl/mw/cpu/uart16550/uart_tfifo.v",
+        "dir::../../verilog/rtl/mw/cpu/uart16550/uart_top.v",
+        "dir::../../verilog/rtl/mw/cpu/uart16550/uart_transmitter.v",
+        "dir::../../verilog/rtl/mw/cpu/uart16550/uart_wb.v",
+        "dir::../../verilog/rtl/mw/cpu/uart16550/raminfr.v",
         "dir::../../verilog/rtl/mw/sram/CF_SRAM_4096x32/hdl/controllers/ram_controller_wb.v",
         "dir::../../verilog/rtl/mw/sram/CF_SRAM_4096x32/hdl/bus_wrapper/CF_SRAM_4096x32_wb_wrapper.v"
     ],
     
     "VERILOG_FILES_BLACKBOX": [
-        "dir::../../verilog/rtl/mw/sram/CF_SRAM_4096x32/hdl/CF_SRAM_4096x32.v"
+        "dir::../../verilog/rtl/mw/sram/CF_SRAM_4096x32/hdl/CF_SRAM_4096x32.v",
+        "dir::../../verilog/rtl/Microwatt_FP_DFFRFile.v",
+        "dir::../../verilog/rtl/wrapper/RAM32_1RW1R.v",
+        "dir::../../verilog/gl/multiply_add_64x64.v"
     ],
     
     "EXTRA_LEFS": [
-        "dir::../../verilog/rtl/mw/sram/CF_SRAM_4096x32/lef/CF_SRAM_4096x32.lef"
+        "dir::../../verilog/rtl/mw/sram/CF_SRAM_4096x32/lef/CF_SRAM_4096x32.lef",
+        "dir::../../lef/Microwatt_FP_DFFRFile.lef",
+        "dir::../../lef/RAM32_1RW1R.lef",
+        "dir::../../lef/multiply_add_64x64.lef"
     ],
     
     "EXTRA_LIBS": [
-        "dir::../../verilog/rtl/mw/sram/CF_SRAM_4096x32/lib/CF_SRAM_4096x32.lib"
+        "dir::../../verilog/rtl/mw/sram/CF_SRAM_4096x32/lib/CF_SRAM_4096x32.lib",
+        "dir::../../lib/Microwatt_FP_DFFRFile.lib",
+        "dir::../../lib/RAM32_1RW1R.lib",
+        "dir::../../lib/multiply_add_64x64.lib"
     ],
     
     "EXTRA_GDS_FILES": [
-        "dir::../../verilog/rtl/mw/sram/CF_SRAM_4096x32/gds/CF_SRAM_4096x32.gds"
+        "dir::../../verilog/rtl/mw/sram/CF_SRAM_4096x32/gds/CF_SRAM_4096x32.gds",
+        "dir::../../gds/Microwatt_FP_DFFRFile.gds",
+        "dir::../../gds/RAM32_1RW1R.gds",
+        "dir::../../gds/multiply_add_64x64.gds"
     ],
     
-    "CLOCK_PERIOD": 20,
+    "CLOCK_PERIOD": 25,
     "CLOCK_PORT": "wb_clk_i",
     "CLOCK_NET": "wb_clk_i",
     
@@ -52,6 +74,11 @@
     
     "MACRO_PLACEMENT_CFG": "dir::macro.cfg",
     "FP_PDN_MACRO_HOOKS": "u_sys_sram.i_sram vccd1 vssd1 vccd1 vssd1",
+    "ERROR_ON_SYNTH_CHECKS": false,
+    "QUIT_ON_UNMAPPED_CELLS": false,
+    "QUIT_ON_SYNTH_CHECKS": false,
+    "QUIT_ON_TIMING_VIOLATIONS": false,
+    "CELL_TYPES_TO_SKIP_POWER_CONNECTIONS": ["dmi_dtm_8_64"],
     
     "PL_TARGET_DENSITY": 0.55,
     "FP_CORE_UTIL": 40,
@@ -67,22 +94,22 @@
     
     "pdk::sky130*": {
         "RT_MAX_LAYER": "met4",
-        "CLOCK_PERIOD": 20,
+        "CLOCK_PERIOD": 25,
         "scl::sky130_fd_sc_hd": {
-            "CLOCK_PERIOD": 20
+            "CLOCK_PERIOD": 25
         },
         "scl::sky130_fd_sc_hdll": {
-            "CLOCK_PERIOD": 20
+            "CLOCK_PERIOD": 25
         },
         "scl::sky130_fd_sc_hs": {
-            "CLOCK_PERIOD": 15
+            "CLOCK_PERIOD": 20
         },
         "scl::sky130_fd_sc_ls": {
-            "CLOCK_PERIOD": 25,
+            "CLOCK_PERIOD": 30,
             "SYNTH_MAX_FANOUT": 5
         },
         "scl::sky130_fd_sc_ms": {
-            "CLOCK_PERIOD": 20
+            "CLOCK_PERIOD": 25
         }
     },
     

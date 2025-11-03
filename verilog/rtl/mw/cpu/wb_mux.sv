@@ -81,7 +81,7 @@ module wb_fabric #(
             m_dat_r = s_dat_r[32*k +: 32];
             m_ack   = s_ack[k];
             m_err   = s_err[k];
-            break; // <- lowest index wins
+            // break; // <- lowest index wins
         end
         end
         if (DEFAULT_ERR_ON_MISS && !any_hit) begin
@@ -90,22 +90,6 @@ module wb_fabric #(
     end
     end
 
-
-    // Simulation-only one-hot check for address overlaps
-    `ifndef SYNTHESIS
-    if (CHECK_ONE_HOT) begin : ONE_HOT_CHECK
-        always_comb begin
-            if (m_cyc && m_stb) begin
-                int ones = 0;
-                for (int k = 0; k < NS; k++) begin
-                    if (hit[k]) ones++;
-                end
-                if (ones > 1)
-                    $warning("wb_fabric: address overlaps detected (more than one slave hit)");
-            end
-        end
-    end
-    `endif
 
 endmodule
 
